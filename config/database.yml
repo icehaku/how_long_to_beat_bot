@@ -1,13 +1,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: mcs_bot
+  database: hltb_bot
   pool: 5
-  username: ice 
-  password: "ice123"
+  username: postgres
+  password: ""
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: matcher
+  database: hltb_bot
   pool: 5

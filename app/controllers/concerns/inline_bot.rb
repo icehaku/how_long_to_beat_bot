@@ -8,8 +8,8 @@ module InlineBot
     if params["inline_query"].present?
     	inline_query_id = params["inline_query"]["id"]
     	query = params["inline_query"]["query"]
-    end		
-	
+    end
+
 		url = URI.encode("http://www.metacritic.com/search/all/#{query}/results")
 		user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.854.0 Safari/535.2"
 
@@ -35,10 +35,10 @@ module InlineBot
 					game["url"] = "http://www.metacritic.com#{game["url"]}"
           if game["metascore"].present?
             game["image"] = set_metascore_image(game["metascore"])
-            game["metascore"] = "#{game['metascore']}"            
+            game["metascore"] = "#{game['metascore']}"
           else
             game["image"] = "http://www.headslinger.com/feed_img/1000565.jpg"
-          end          
+          end
 					#game["image_userscore"] = get_metacritic_image_userscore_by_url(game["url"])
 
 					games << game
@@ -46,7 +46,7 @@ module InlineBot
 	    end
 	  end
 
-    token = '350328660:AAGWpPvLjrHihatk_OhCioDWGHEyjYh2Pts' #Ice Debug Bot
+    token = '386847090:AAGmVhpUjbkmZKvqE8Wasx8PKRfBHh0domk' #How Long to Beat Bot
     bot = Telegram::Bot::Client.new(token)
 
     results = games.map.with_index do |game, index|
@@ -72,7 +72,7 @@ module InlineBot
       user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.854.0 Safari/535.2"
       url = "http://www.metacritic.com#{url}"
       page = Nokogiri::HTML(open(url, 'User-Agent' => user_agent), nil, "UTF-8")
-      image = page.css("img.product_image.large_image")[0].values[1]    
+      image = page.css("img.product_image.large_image")[0].values[1]
       userscore = page.css("div.product_scores").css("div.metascore_w.user.large.game")[0].text
       [image, userscore]
     rescue
