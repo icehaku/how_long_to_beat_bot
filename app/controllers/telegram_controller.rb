@@ -17,22 +17,44 @@ class TelegramController < ApplicationController
   end
 
   def hi
-		#url = URI.encode("https://howlongtobeat.com/search_main.php")
-		#url = URI.encode("http://www.metacritic.com")
-		url = URI.encode("http://www.metacritic.com/search/all/pokemon/results")
-		#raise url.inspect
-		#url = "www.metacritic.com"
+		require 'no_proxy_fix'
 
-		#queryString:pokemo
-		#t:games
-		#sorthead:popular
-		#sortd:Normal Order
-		#plat:
-		#length_type:main
+		url = URI.encode("https://howlongtobeat.com/search_main.php?page=1")
+		party_response = HTTParty.post(url,
+			body: {
+				queryString:"pokemon",
+				t:"games",
+				sorthead:"popular",
+				sortd:"Normal Order",
+				length_type:"main",
+			})
 
-		user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.854.0 Safari/535.2"
-		results = Nokogiri::HTML(open(url, 'User-Agent' => user_agent), nil, "UTF-8")
+		result = Nokogiri::HTML(party_response)
+		result = result.css("li.back_white")
 
-		raise results.inspect
+		#https://howlongtobeat.com/gameimages/
+		games = []
+
+		result.each do |game|
+			game_ready = Hash.new()
+			#raise game.css("div.search_list_details_block").css("div.search_list_tidbit")[1].text.inspect
+
+			game_ready["name"] = game.css("div.search_list_image").css("a").attribute("title").value
+			game_ready["image"] = game.css("div.search_list_image").css("a").css("img").attribute("src").value
+
+			if game.css("div.search_list_details_block").css("div.search_list_tidbit")[0].present?
+				game_ready["categoria"] = game.css("div.search_list_details_block").css("div.search_list_tidbit")[0].text
+			end
+
+			if game.css("div.search_list_details_block").css("div.search_list_tidbit")[1].present?
+				game_ready["categoria_tempo"] = game.css("div.search_list_details_block").css("div.search_list_tidbit")[1].text
+			end
+
+			#search_list_tidbit_short
+			#search_list_tidbit_long
+			if game.css("div.search_list_details_block").css("div.search_list_tidbit").present?
+				games << game_ready
+			end
+		end
   end
 end
