@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: mcs_bot
+  pool: 5
+  username: ice 
+  password: "ice123"
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: matcher
+  pool: 5

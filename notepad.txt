@@ -1,0 +1,33 @@
+def giantbomb
+	key = "59e98768f1acb8d1f21981da6b89efb61acd7001"
+	#games
+	#http://www.giantbomb.com/api/search/?api_key=59e98768f1acb8d1f21981da6b89efb61acd7001&format=json&query="metroid prime"&resources=game_ratings
+	#http://www.giantbomb.com/api/game/3030-4725/?api_key=59e98768f1acb8d1f21981da6b89efb61acd7001&format=json&field_list=genres,name
+	#rating
+	raise "giantbomb"
+end
+
+
+def giant_bomb(param)
+	raise "giant_bomb"
+	#59e98768f1acb8d1f21981da6b89efb61acd7001
+	#http://www.giantbomb.com/api/games/?api_key=59e98768f1acb8d1f21981da6b89efb61acd7001&platforms=&sort=date_added:desc&field_list=date_added,deck,id,image,name,platforms&limit=10&offset=0&format=json
+end
+
+
+def igdb(param)
+	raise "igdb"
+	#https://www.igdb.com/
+end
+
+https://api.telegram.org/bot350328660:AAGWpPvLjrHihatk_OhCioDWGHEyjYh2Pts/setWebhook?url=https://metacritic-bot.herokuapp.com/webhooks/telegram_XY9wMhL0M9Y0B2DBt0H22HFd01969KaB
+
+
+https://core.telegram.org/bots/api#inline-mode
+https://telegram.org/blog/inline-bots
+
+
+
+
+
+350328660:AAGWpPvLjrHihatk_OhCioDWGHEyjYh2Pts
