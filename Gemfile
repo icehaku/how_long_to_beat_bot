@@ -8,6 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'httparty'
 gem 'jquery-rails'
+gem 'sass-rails', '~> 5.0'
+gem 'turbolinks', '~> 5'
 
 group :development do
   gem 'no_proxy_fix'
