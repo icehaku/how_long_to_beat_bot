@@ -57,7 +57,7 @@ module InlineBot
         type: "article",
         title: game['name'],
         description: game['name'],
-        thumb_url: 'https://howlongtobeat.com/gameimages/#{game["image"]}',
+        thumb_url: "https://howlongtobeat.com/gameimages/#{game['image']}",
         input_message_content: {
           parse_mode: "HTML",
           message_text: "\xF0\x9F\x91\xBE <b>#{game['name']}</b>",
@@ -65,7 +65,7 @@ module InlineBot
       }
     end
 
-    raise results.inspect
+    #raise results.inspect
 
     bot.answer_inline_query inline_query_id: inline_query_id ,results: results
 	end
