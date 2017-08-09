@@ -53,9 +53,9 @@ module InlineBot
 
     results = games.map.with_index do |game, index|
       {
+        id: index.to_s,
         type: "article",
         title: game['name'],
-        id: index.to_s,
         description: game['name'],
         thumb_url: 'https://howlongtobeat.com/gameimages/#{game["image"]}',
         input_message_content: {
@@ -64,6 +64,8 @@ module InlineBot
         },
       }
     end
+
+    raise results.inspect
 
     bot.answer_inline_query inline_query_id: inline_query_id ,results: results
 	end
