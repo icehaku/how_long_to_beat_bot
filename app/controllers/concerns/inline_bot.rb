@@ -60,7 +60,7 @@ module InlineBot
         thumb_url: "https://howlongtobeat.com/gameimages/#{game['image']}",
         input_message_content: {
           parse_mode: "HTML",
-          message_text: "\xF0\x9F\x91\xBE <b>#{game['name']}</b>",
+          message_text: "\xF0\x9F\x91\xBE <b>#{game['name']}</b> /n https://howlongtobeat.com/gameimages/#{game['image']}",
         },
       }
     end
