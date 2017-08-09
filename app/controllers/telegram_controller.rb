@@ -17,7 +17,7 @@ class TelegramController < ApplicationController
   end
 
   def hi
-		require 'no_proxy_fix'
+		#require 'no_proxy_fix'
 
 		url = URI.encode("https://howlongtobeat.com/search_main.php?page=1")
 		party_response = HTTParty.post(url,
