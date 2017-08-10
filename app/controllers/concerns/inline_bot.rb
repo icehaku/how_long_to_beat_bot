@@ -3,38 +3,38 @@ module InlineBot
 
 	def inline(params)
     if params["inline_query"].present?
-    	@inline_query_id = params["inline_query"]["id"]
-    	@query = params["inline_query"]["query"]
+    	inline_query_id = params["inline_query"]["id"]
+    	query = params["inline_query"]["query"]
     end
+
+    raise query.inspect
 
     begin
       url = URI.encode("https://howlongtobeat.com/search_main.php?page=1")
       party_response = HTTParty.post(url,
         body: {
-          queryString: @query,
+          queryString: query,
           t: "games",
           sorthead: "popular",
           sortd: "Normal Order",
           length_type: "main",
         })
 
-      @html_result = Nokogiri::HTML(party_response)
-      @html_result = result.css("li.back_white")
+      html_result = Nokogiri::HTML(party_response)
+      html_result = result.css("li.back_white")
     rescue
-      @html_result = nil
+      html_result = nil
     end
 
-    raise @html_result.inspect
-
-    if @html_result.present?
-      games = parse_scraped_games(@html_result)
+    if html_result.present?
+      games = parse_scraped_games(html_result)
 
       token = '386847090:AAGmVhpUjbkmZKvqE8Wasx8PKRfBHh0domk' #How Long to Beat Bot
       bot = Telegram::Bot::Client.new(token)
 
       telegram_inline_result = create_telegram_inline_result(games)
 
-      bot.answer_inline_query inline_query_id: @inline_query_id, results: telegram_inline_result
+      bot.answer_inline_query inline_query_id: inline_query_id, results: telegram_inline_result
     end
 	end
 
