@@ -38,6 +38,8 @@ module InlineBot
 
 
   def parse_scraped_games(result)
+    games = []
+
     result.each do |game|
       game_info = Hash.new()
 
