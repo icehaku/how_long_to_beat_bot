@@ -63,6 +63,8 @@ module InlineBot
         games << game_info
       end
     end
+
+    return games
   end
 
 
