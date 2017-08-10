@@ -11,6 +11,8 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 
+gem 'rspec-rails'
+
 group :development do
   gem 'no_proxy_fix'
   gem 'byebug', platform: :mri
