@@ -12,6 +12,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 
 gem 'rspec-rails'
+gem 'simplecov'
+
+group :test do
+  gem 'sqlite3'
+end
 
 group :development do
   gem 'no_proxy_fix'

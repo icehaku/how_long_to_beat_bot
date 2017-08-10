@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+    resources :telegram
+
 	root to: 'telegram#hi'
 
 	post '/webhooks/telegram_HLTBMhL0M9Y0B2DBt0H22HFd01969ICE', to: 'telegram#callback'
