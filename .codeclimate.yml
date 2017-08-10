@@ -1,2 +1,9 @@
+engines:
+  rubocop:
+    enabled: true
+    exclude_paths:
+    - "vendor/"
+   eslint:
+    enabled: true
 exclude_paths:
-- "app/assets/**/*"
+- "app/assets/"
