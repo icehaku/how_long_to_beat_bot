@@ -41,15 +41,15 @@ module InlineBot
         game_dom = game.css("div.search_list_details_block")
 
         if game_dom.css("div.search_list_tidbit")[0].present?
-          game_ready["categoria"] = game_dom.css("div.search_list_tidbit")[0].text
+          game_info["categoria"] = game_dom.css("div.search_list_tidbit")[0].text
         end
 
         if game_dom.css("div.search_list_tidbit")[1].present?
-          game_ready["categoria_tempo"] = game_dom.css("div.search_list_tidbit")[1].text
+          game_info["categoria_tempo"] = game_dom.css("div.search_list_tidbit")[1].text
         end
 
         if game_dom.css("div.search_list_tidbit").present?
-          games << game_ready
+          games << game_info
         end
       end
 
