@@ -7,7 +7,6 @@ module InlineBot
     	@query = params["inline_query"]["query"]
     end
 
-
     begin
       url = URI.encode("https://howlongtobeat.com/search_main.php?page=1")
       party_response = HTTParty.post(url,
@@ -25,8 +24,9 @@ module InlineBot
       @html_result = nil
     end
 
+    raise @html_result.inspect
+
     if @html_result.present?
-      raise "lol"
       games = parse_scraped_games(@html_result)
 
       token = '386847090:AAGmVhpUjbkmZKvqE8Wasx8PKRfBHh0domk' #How Long to Beat Bot
