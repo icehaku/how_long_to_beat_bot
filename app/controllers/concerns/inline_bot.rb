@@ -7,6 +7,7 @@ module InlineBot
     	query = params["inline_query"]["query"]
     end
 
+
     begin
       url = URI.encode("https://howlongtobeat.com/search_main.php?page=1")
       party_response = HTTParty.post(url,
@@ -74,7 +75,7 @@ module InlineBot
         id: index.to_s,
         type: "article",
         title: game['name'],
-        description: "<b>#{game['name']}</b> \n #{game['categoria']}: #{game['categoria_tempo']}",
+        description: "#{game['categoria']}: #{game['categoria_tempo']}",
         thumb_url: "https://howlongtobeat.com/#{game['image']}",
         input_message_content: {
           parse_mode: "HTML",
