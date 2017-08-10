@@ -7,7 +7,7 @@ module InlineBot
     	query = params["inline_query"]["query"]
     end
 
-    begin
+    #begin
       url = URI.encode("https://howlongtobeat.com/search_main.php?page=1")
       party_response = HTTParty.post(url,
         body: {
@@ -20,10 +20,10 @@ module InlineBot
 
       html_result = Nokogiri::HTML(party_response)
       html_result = result.css("li.back_white")
-    rescue
-      html_result = nil
-    end
-    raise html_result.inspect
+    #rescue
+    #  html_result = nil
+    #end
+    #raise html_result.inspect
     if html_result.present?
       games = parse_scraped_games(html_result)
 
