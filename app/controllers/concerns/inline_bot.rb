@@ -23,7 +23,7 @@ module InlineBot
     rescue
       html_result = nil
     end
-    raise html_result.inspect
+
     if html_result.present?
       games = parse_scraped_games(html_result)
 
