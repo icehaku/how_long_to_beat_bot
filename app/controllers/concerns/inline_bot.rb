@@ -70,7 +70,7 @@ module InlineBot
 
 
   def create_telegram_inline_result(games)
-    results = games.map.with_index do |game, index|
+    games.map.with_index do |game, index|
       {
         id: index.to_s,
         type: "article",
