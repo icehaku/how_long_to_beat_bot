@@ -1,5 +1,9 @@
 engines:
   rubocop:
     enabled: true
+ratings:
+  paths:
+  - app/**
+  - lib/**
 exclude_paths:
 - "app/assets/cable.js"
