@@ -24,11 +24,10 @@ module InlineBot
       html_result = Nokogiri::HTML(party_response)
       html_result = result.css("li.back_white")
     rescue
-      result = nil
+      html_result = nil
     end
 
-    games = []
-    if result.present?
+    if html_result.present?
       games = parse_scraped_games(html_result)
 
       token = '386847090:AAGmVhpUjbkmZKvqE8Wasx8PKRfBHh0domk' #How Long to Beat Bot
