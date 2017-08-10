@@ -30,26 +30,26 @@ module InlineBot
     games = []
     if result.present?
       result.each do |game|
-        game_ready = Hash.new()
-        begin
-          game_ready["name"] = game.css("div.search_list_image").css("a").attribute("title").value
-          game_ready["image"] = game.css("div.search_list_image").css("a").css("img").attribute("src").value
-          game_ready["url"] = game.css("div.search_list_image").css("a").attribute("href").value
+        game_info = Hash.new()
 
-          game_ready["categoria"] = ""
-          if game.css("div.search_list_details_block").css("div.search_list_tidbit")[0].present?
-            game_ready["categoria"] = game.css("div.search_list_details_block").css("div.search_list_tidbit")[0].text
-          end
+        game_dom = game.css("div.search_list_image").css("a")
 
-          game_ready["categoria_tempo"] = ""
-          if game.css("div.search_list_details_block").css("div.search_list_tidbit")[1].present?
-            game_ready["categoria_tempo"] = game.css("div.search_list_details_block").css("div.search_list_tidbit")[1].text
-          end
+        game_info["name"] = game_dom.attribute("title").value
+        game_info["image"] = game_dom.css("img").attribute("src").value
+        game_info["url"] = game_dom.attribute("href").value
 
-          if game.css("div.search_list_details_block").css("div.search_list_tidbit").present?
-            games << game_ready
-          end
-        rescue
+        game_dom = game.css("div.search_list_details_block")
+
+        if game_dom.css("div.search_list_tidbit")[0].present?
+          game_ready["categoria"] = game_dom.css("div.search_list_tidbit")[0].text
+        end
+
+        if game_dom.css("div.search_list_tidbit")[1].present?
+          game_ready["categoria_tempo"] = game_dom.css("div.search_list_tidbit")[1].text
+        end
+
+        if game_dom.css("div.search_list_tidbit").present?
+          games << game_ready
         end
       end
 
@@ -61,11 +61,11 @@ module InlineBot
           id: index.to_s,
           type: "article",
           title: game['name'],
-          description: "",
+          description: "<b>#{game['name']}</b> \n #{game['categoria']}: #{game['categoria_tempo']}",
           thumb_url: "https://howlongtobeat.com/#{game['image']}",
           input_message_content: {
             parse_mode: "HTML",
-            message_text: "\xF0\x9F\x91\xBE <b>#{game['name']}</b> \n #{game['categoria']}: #{game['categoria_tempo']} \n https://howlongtobeat.com/#{game['url']}",
+            message_text: "\xF0\x9F\x91\xBE <b>#{game['name']}</b> \n <b>.#{game['categoria']}:</b> #{game['categoria_tempo']} \n https://howlongtobeat.com/#{game['url']}",
           },
         }
       end
