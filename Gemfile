@@ -11,11 +11,11 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 
-gem 'rspec-rails'
-gem 'simplecov'
-
 group :test do
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'simplecov'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
 end
 
 group :development do
