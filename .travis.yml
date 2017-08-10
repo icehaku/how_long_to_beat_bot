@@ -22,9 +22,14 @@
 addons:
   code_climate:
     repo_token: 076b799ee898fc55c527e985ff8117103ba42effc7fa0f098acba72f255b9f6c
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+
 # regular test configuration
 after_success:
-  - bundle exec codeclimate-test-reporter
+  - bundle exec cc-test-reporter
 
 
 #env:
