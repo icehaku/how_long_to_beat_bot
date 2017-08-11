@@ -1,3 +1,4 @@
+# How Long to Beat Bot
 
 <a href="https://travis-ci.org/icehaku/how_long_to_beat_bot">
 <img src="https://travis-ci.org/icehaku/how_long_to_beat_bot.svg?branch=master" />
