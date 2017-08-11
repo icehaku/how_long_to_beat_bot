@@ -1,63 +1,6 @@
-#env:
-#  global:
-#    - CC_TEST_REPORTER_ID=076b799ee898fc55c527e985ff8117103ba42effc7fa0f098acba72f255b9f6c
-#    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
-#language: ruby
-#rvm:
-#  - 2.4.0
-#before_script:
-#  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#  - chmod +x ./cc-test-reporter
-#script:
-#  - bundle exec rake test
-#  # Preferably you will run test-reporter on branch update events. But
-#  # if you setup travis to build PR updates only, you don't need to run
-#  # the line below
-#  #- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
-#  # In the case where travis is setup to build PR updates only,
-#  # uncomment the line below
-#  #- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
-
-#addons:
-#  code_climate:
-#    repo_token: 076b799ee898fc55c527e985ff8117103ba42effc7fa0f098acba72f255b9f6c
-#
-#before_script:
-#  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#  - chmod +x ./cc-test-reporter
-#
-# regular test configuration
-#after_success:
-#  - bundle exec cc-test-reporter
-
-
-#env:
-#  global:
-#    - CC_TEST_REPORTER_ID=076b799ee898fc55c527e985ff8117103ba42effc7fa0f098acba72f255b9f6c
-#    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
-#language: ruby
-#rvm:
-#  - 2.4.0
-#before_script:
-#  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#  - chmod +x ./cc-test-reporter
-#script:
-#  - bundle exec rspec
-#  # Preferably you will run test-reporter on branch update events. But
-#  # if you setup travis to build PR updates only, you don't need to run
-#  # the line below
-#  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
-#  # In the case where travis is setup to build PR updates only,
-#  # uncomment the line below
-#  # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
-
-language: ruby
-rvm:
-  - 2.4.0
-
 addons:
   code_climate:
     repo_token: 076b799ee898fc55c527e985ff8117103ba42effc7fa0f098acba72f255b9f6c
-    
+# regular test configuration
+after_success:
+  - bundle exec codeclimate-test-reporter
