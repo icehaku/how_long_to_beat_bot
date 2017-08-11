@@ -7,8 +7,8 @@
 <img src="https://travis-ci.org/icehaku/how_long_to_beat_bot.svg?branch=master" />
 </a>
 
-<a href="https://codeclimate.com/github/icehaku/mcs-bot/coverage">
-<img src="https://codeclimate.com/github/icehaku/mcs-bot/badges/coverage.svg" />
+<a href="https://codeclimate.com/github/icehaku/how_long_to_beat_bot/coverage">
+<img src="https://codeclimate.com/github/icehaku/how_long_to_beat_bot/badges/coverage.svg" />
 </a>
 
 A inline Telegram Bot to get https://howlongtobeat.com/ ( How Long to Beat ) game information;
